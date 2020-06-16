@@ -1,0 +1,112 @@
+[
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-MyVMware-User",
+        "description": "MyVMware.com User Name. Used to download the TKG binaries.",
+        "type": "REGULAR",
+        "value": "myvmware@vmware.com"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-Git-Repository",
+        "description": "GIT Repository address. Used to store configuration for TKG and Kubernetes",
+        "type": "REGULAR",
+        "value": "git@github.com:VMwareCMBUTMM/fielddemo-tkg-configs.git"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vRA-Password",
+        "description": "vRealize Automation Password. Used for the on-boarding tasks",
+        "type": "SECRET",
+        "value": "********"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-Docker-Host",
+        "description": "Docker host FQDN. Used to run an SSH task to execute the TKG bootstrapping.",
+        "type": "REGULAR",
+        "value": "sc2-fd-perm-docker.cmbu.local"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vCenter-FQDN",
+        "description": "vCenter FQDN.  Used by GOVC to create folders and deploy templates. Also used by TKG to deploy VMs.",
+        "type": "REGULAR",
+        "value": "sc2vc03.cmbu.local"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-Docker-Host-Password",
+        "description": "Docker host password. Used to SSH to the Docker host",
+        "type": "SECRET",
+        "value": "********"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vCenter-Password",
+        "description": "vCenter Password. Used by GOVC to create folders and deploy templates. Also used by TKG to deploy VMs.",
+        "type": "SECRET",
+        "value": "********"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-Docker-Host-User",
+        "description": "Docker host username. Used to SSH to the Docker host",
+        "type": "REGULAR",
+        "value": "autotmm"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vRA-Project",
+        "type": "REGULAR",
+        "value": "Field Demo"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vRA-Username",
+        "description": "vRealize Automation User Name. Used for the on-boarding tasks ",
+        "type": "REGULAR",
+        "value": "configuser"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vCenter-Username",
+        "description": "vCenter User. Used by GOVC to create folders and deploy templates. Also used by TKG to deploy VMs.",
+        "type": "REGULAR",
+        "value": "vra-cloud-proxy@cmbu.local"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-MyVMware-Password",
+        "description": "MyVMware.com User Password. Used to download the TKG binaries. ",
+        "type": "SECRET",
+        "value": "********"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-vRA-URL",
+        "description": "vRealize Automation URL (https://FQDN). Used for the on-boarding tasks.",
+        "type": "REGULAR",
+        "value": "https://wdc-fd-vra8-01.cmbu.local"
+    },
+    {
+        "project": "Field Demo",
+        "kind": "VARIABLE",
+        "name": "TKG-Git-Deploy-Token",
+        "type": "SECRET",
+        "value": "********"
+    }
+]

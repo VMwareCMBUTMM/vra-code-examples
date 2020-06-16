@@ -1,0 +1,374 @@
+---
+project: Field Demo
+kind: PIPELINE
+name: TKG Management Cluster
+icon: data:image/png;base64,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
+enabled: true
+description: |-
+  Deploy a Tanzu Kubernetes Grid 1.0 Management Cluster
+  - Deploys a Production or Development Management Cluster
+  - T-Shirt Sizing for Cluster VMs
+  - Adds the deployment to Cloud Assembly
+concurrency: 1
+input:
+  GOVC_Version: v0.22.1
+  GO_Version: '1.14'
+  TKG_CLI: tkg-linux-amd64-v1.0.0_vmware.1.gz
+  TKG_Cluster_CIDR: 100.96.0.0/11
+  TKG_Cluster_Name: ''
+  TKG_Cluster_Type: ''
+  TKG_K8s_OVA: photon-3-v1.17.3_vmware.2.ova
+  TKG_Proxy_OVA: photon-3-capv-haproxy-v0.6.3_vmware.1.ova
+  TKG_SSH_Key: ''
+  TKG_Service_CIDR: 100.64.0.0/13
+  TKG_VM_Size: ''
+  vCenter_Datacenter: ''
+  vCenter_Datastore: ''
+  vCenter_Folder: ''
+  vCenter_Network: ''
+  vCenter_Resource: ''
+_inputMeta:
+  TKG_VM_Size:
+    description: TKG Management VM size
+    mandatory: true
+  GOVC_Version:
+    description: GOVC Version
+    mandatory: false
+  TKG_Cluster_CIDR:
+    description: TKG Cluster CIDR
+    mandatory: true
+  vCenter_Datacenter:
+    description: vCenter Datacenter Name (e.g. sc2dc03)
+    mandatory: true
+  vCenter_Network:
+    description: vCenter Network Name (e.g. Mgmt VMs)
+    mandatory: true
+  TKG_CLI:
+    description: TKG CLI Binary to download
+    mandatory: true
+  TKG_Cluster_Name:
+    description: TKG Cluster Name
+    mandatory: true
+  vCenter_Datastore:
+    description: vCenter Datastore Name (e.g. sc2c02vsan01)
+    mandatory: true
+  vCenter_Resource:
+    description: vCenter Resource path (e.g. /sc2dc03/host/sc2c04-ATMM/Resources)
+    mandatory: true
+  TKG_K8s_OVA:
+    description: TKG Kubernetes Template to download
+    mandatory: true
+  TKG_Proxy_OVA:
+    description: TKG Proxy Template to download
+    mandatory: true
+  TKG_Cluster_Type:
+    description: Development or Production Cluster
+    mandatory: true
+  GO_Version:
+    description: Go Version
+    mandatory: false
+  TKG_SSH_Key:
+    description: TKG SSH Public Key
+    mandatory: true
+  vCenter_Folder:
+    description: vCenter VM folder path for TKG deployments (e.g. /sc2dc03/vm/TKG)
+    mandatory: true
+  TKG_Service_CIDR:
+    description: TKG Service CIDR
+    mandatory: true
+workspace:
+  endpoint: sc2-fd-perm-docker
+  image: sammcgeown/codestream-ci-tkg:0.0.6
+  registry: ''
+  path: /build
+  limits:
+    cpu: 2.0
+    memory: 1024
+stageOrder:
+- Build
+stages:
+  Build:
+    taskOrder:
+    - Export VC Password
+    - Export MyVMware Password
+    - Get TKG Templates
+    - Deploy TKG Management
+    - Onboard TKG Management Cluster
+    tasks:
+      Onboard TKG Management Cluster:
+        type: vRO
+        ignoreFailure: true
+        endpoints:
+          vroServer: vRO - Local
+        input:
+          workflowName: Onboard TKG Cluster
+          workflowID: 627a648f-5c05-47d4-ade4-b3c0d71d1fe4
+          parameters:
+            vRAProjectName: ${var.TKG-vRA-Project}
+            tkgManagementCluster: ${input.TKG_Cluster_Name}
+            vRAUrl: ${var.TKG-vRA-URL}
+            vRAPassword: ${var.TKG-vRA-Password}
+            tkgDeploymentVMCount: ${Build.Get TKG Templates.output.exports.VMCOUNT}
+            vRAUser: ${var.TKG-vRA-Username}
+            vCenterUrl: ${var.TKG-vCenter-FQDN}
+            tkgDeploymentName: ${input.TKG_Cluster_Name}
+            tkgClusterType: management
+      Get TKG Templates:
+        type: CI
+        input:
+          steps:
+          - set +x
+          - source /build/tkg.secret
+          - set -x
+          - '# GOVC Connection variables'
+          - export GOVC_INSECURE=1
+          - export GOVC_URL="https://${var.TKG-vCenter-FQDN}/sdk"
+          - export GOVC_USERNAME=${var.TKG-vCenter-Username}
+          - export GOVC_DATASTORE="${input.vCenter_Datastore}"
+          - export GOVC_NETWORK="${input.vCenter_Network}"
+          - export GOVC_RESOURCE_POOL="${input.vCenter_Resource}"
+          - '# Export environment variables for vmw-cli'
+          - export VMWUSER=${var.TKG-MyVMware-User}
+          - ''
+          - '# Test if the folder exists'
+          - FOLDER=$(govc folder.info -json ${input.vCenter_Folder} | jq -r '.Folders[] | .Name')
+          - if [[ $FOLDER ]]
+          - 'then '
+          - '  echo "Folder exists - skipping..."'
+          - else
+          - '  govc folder.create ${input.vCenter_Folder}'
+          - fi
+          - '# Create Template folder'
+          - TEMPLATEFOLDER=$(govc folder.info -json ${input.vCenter_Folder}/Templates | jq -r '.Folders[]
+            | .Name')
+          - if [[ $TEMPLATEFOLDER ]]
+          - 'then '
+          - '  echo "Folder exists - skipping..."'
+          - else
+          - '  govc folder.create ${input.vCenter_Folder}/Templates'
+          - fi
+          - '# Create Management folder'
+          - MANAGEMENTFOLDER=$(govc folder.info -json ${input.vCenter_Folder}/${input.TKG_Cluster_Name}
+            | jq -r '.Folders[] | .Name')
+          - if [[ $MANAGEMENTFOLDER ]]
+          - 'then '
+          - '  echo "Folder exists - skipping..."'
+          - else
+          - '  govc folder.create ${input.vCenter_Folder}/${input.TKG_Cluster_Name}'
+          - fi
+          - ''
+          - '# Test if the K8s Template exists'
+          - KubeVM=$(echo "${input.TKG_K8s_OVA}" | sed -e "s/.ova//")
+          - '#TKGK8SVM=$(govc vm.info $KubeVM | jq -e ''.VirtualMachines'')'
+          - TKGK8SVM=$(govc ls "${input.vCenter_Folder}/Templates/$KubeVM")
+          - if [ -z "$TKGK8SVM" ]
+          - then
+          - '    echo "TKG Kuberentes Template does not exist..."'
+          - '    # Download TKG Kubernetes OVA'
+          - '    vmw-cli refresh >> /dev/null'
+          - '    vmw-cli index vmware-tanzu-kubernetes-grid >> /dev/null'
+          - '    vmw-cli get ${input.TKG_K8s_OVA}'
+          - '    govc import.ova -name=$KubeVM -folder=${input.vCenter_Folder}/Templates ${input.TKG_K8s_OVA}'
+          - '    # Take a snapshot of the VM'
+          - '    govc snapshot.create -vm $KubeVM root'
+          - '    # Mark the VM as a template'
+          - '    govc vm.markastemplate $KubeVM'
+          - else
+          - '    echo "TKG Kuberentes Template exists..."'
+          - fi
+          - ''
+          - '# Test if the Proxy Template exists'
+          - ProxyVM=$(echo "${input.TKG_Proxy_OVA}" | sed -e "s/.ova//")
+          - TKGPRXVM=$(govc ls "${input.vCenter_Folder}/Templates/$ProxyVM")
+          - if [ -z "$TKGPRXVM" ]
+          - then
+          - '    echo "TKG HAProxy Template does not exist..."'
+          - '    # Download TKG Kubernetes OVA'
+          - '    vmw-cli refresh >> /dev/null'
+          - '    vmw-cli index vmware-tanzu-kubernetes-grid >> /dev/null'
+          - '    vmw-cli get ${input.TKG_Proxy_OVA}'
+          - '    govc import.ova -name=$ProxyVM -folder=${input.vCenter_Folder}/Templates ${input.TKG_Proxy_OVA}'
+          - '    # Take a snapshot of the VM'
+          - '    govc snapshot.create -vm $ProxyVM root'
+          - '    # Mark the VM as a template'
+          - '    govc vm.markastemplate $ProxyVM'
+          - else
+          - '    echo "TKG HAProxy Template exists - skipping..."'
+          - fi
+          - ''
+          - case "${input.TKG_Cluster_Type}" in
+          - '    "prod")'
+          - '        export VMCOUNT=5'
+          - '        ;;'
+          - '    "dev")'
+          - '        export VMCOUNT=3'
+          - '        ;;'
+          - '    *)'
+          - '        export VMCOUNT=3'
+          - '        ;;'
+          - esac
+          export:
+          - VMCOUNT
+          - GOVC_PASSWORD
+          artifacts: [
+            ]
+          process: [
+            ]
+      Export VC Password:
+        type: CI
+        input:
+          steps:
+          - cat <<EOF >> /build/tkg.secret
+          - export GOVC_PASSWORD='${var.TKG-vCenter-Password}'
+          - EOF
+          export: [
+            ]
+          artifacts: [
+            ]
+          process: [
+            ]
+      Export MyVMware Password:
+        type: CI
+        input:
+          steps:
+          - cat <<EOF >> /build/tkg.secret
+          - VMWPASS='${var.TKG-MyVMware-Password}'
+          - EOF
+          export: [
+            ]
+          artifacts: [
+            ]
+          process: [
+            ]
+      Deploy TKG Management:
+        type: SSH
+        input:
+          script: |+
+            # Install TKG CLI
+            TKGPATH=/usr/local/bin/tkg
+            PWD=$(pwd)
+            # Download TKG Kubernetes OVA
+            docker run -t --rm -e VMWUSER=$VMWUSER -e VMWPASS=$VMWPASS -v $PWD:/files apnex/vmw-cli refresh >> /dev/null
+            docker run -t --rm -e VMWUSER=$VMWUSER -e VMWPASS=$VMWPASS -v $PWD:/files apnex/vmw-cli index vmware-tanzu-kubernetes-grid >> /dev/null
+            docker run -t --rm -e VMWUSER=$VMWUSER -e VMWPASS=$VMWPASS -v $PWD:/files apnex/vmw-cli get ${input.TKG_CLI} >> /dev/null
+
+            # Unzip the CLI executable
+            gunzip -qf ${input.TKG_CLI}
+            sudo mv -f $(echo "${input.TKG_CLI}" | sed -e "s/.gz//") $TKGPATH
+            sudo chmod +x $TKGPATH
+
+            # Clear the current configuration
+            rm -f ~/.tkg/config.yaml
+            rm -f ~/.kube/config
+
+            # Creates the initial config
+            tkg get management-cluster
+
+            # Get template VM names
+            K8STemplate=$(echo ${input.TKG_K8s_OVA} | sed 's/.ova//g')
+            HAPTemplate=$(echo ${input.TKG_Proxy_OVA} | sed 's/.ova//g')
+
+            # T-Shirt Sizing
+            case "${input.TKG_VM_Size}" in
+                "small")
+                    VM_RAM="2048"
+                    VM_CPU="1"
+                    VM_DISK="20"
+                    ;;
+                "medium")
+                    VM_RAM="4096"
+                    VM_CPU="2"
+                    VM_DISK="40"
+                    ;;
+                "large")
+                    VM_RAM="8192"
+                    VM_CPU="4"
+                    VM_DISK="40"
+                    ;;
+                "extra-large")
+                    VM_RAM="16384"
+                    VM_CPU="4"
+                    VM_DISK="80"
+                    ;;
+                *)
+                    VM_RAM="4096"
+                    VM_CPU="2"
+                    VM_DISK="40"
+                    ;;
+            esac
+
+            # Development or Production plan
+            case "${input.TKG_Cluster_Type}" in
+                "prod")
+                    TKG_PLAN="prod"
+                    ;;
+                "dev")
+                    TKG_PLAN="dev"
+                    ;;
+                *)
+                    TKG_PLAN="dev"
+                    ;;
+            esac
+
+            cat <<EOF >> ~/.tkg/config.yaml
+            VSPHERE_SSH_AUTHORIZED_KEY: "${input.TKG_SSH_Key}"
+            CLUSTER_CIDR: ${input.TKG_Cluster_CIDR}
+            VSPHERE_DATACENTER: /${input.vCenter_Datacenter}
+            VSPHERE_DATASTORE: /${input.vCenter_Datacenter}/datastore/${input.vCenter_Datastore}
+            VSPHERE_RESOURCE_POOL: ${input.vCenter_Resource}
+            VSPHERE_FOLDER: ${input.vCenter_Folder}/${input.TKG_Cluster_Name}
+            VSPHERE_MEM_MIB: $VM_RAM
+            VSPHERE_PASSWORD: ${Build.Get TKG Templates.output.exports.GOVC_PASSWORD}
+            VSPHERE_TEMPLATE: ${input.vCenter_Folder}/Templates/$K8STemplate
+            VSPHERE_DISK_GIB: $VM_DISK
+            VSPHERE_SERVER: ${var.TKG-vCenter-FQDN}
+            VSPHERE_NETWORK: ${input.vCenter_Network}
+            SERVICE_CIDR: ${input.TKG_Service_CIDR}
+            VSPHERE_USERNAME: ${var.TKG-vCenter-Username}
+            VSPHERE_NUM_CPUS: $VM_CPU
+            VSPHERE_HAPROXY_TEMPLATE: ${input.vCenter_Folder}/Templates/$HAPTemplate
+            EOF
+
+            # Deploy the Management Cluster
+            tkg init --infrastructure=vsphere --name ${input.TKG_Cluster_Name} --plan=$TKG_PLAN
+
+            # Push Config to GitLab
+            TMPDIR=$(pwd)/${executionId}
+            mkdir -p $TMPDIR && cd $TMPDIR
+
+            # Repository has ~/.ssh/id_rsa.pub from the Docker Host as
+            # a Deploy Key, allowing SSH cloning without a password
+            git clone ${var.TKG-Git-Repository} configs
+            git config --global user.email "codestream@vmware.com"
+            git config --global user.name "Code Stream"
+            git config --global push.default simple
+
+            # Move into the git repository
+            cd $TMPDIR/configs
+            # Make a directory for the cluster (-p in case it exists)
+            mkdir -p ${input.TKG_Cluster_Name}
+            # Force copy (-rf) in case files exist already
+            /bin/cp -rf ~/.tkg/config.yaml ${input.TKG_Cluster_Name}/
+            /bin/cp -rf ~/.kube/config ${input.TKG_Cluster_Name}/
+            # Replace the home path with "HOME" to create a template
+            sed -i "s|$HOME|HOME|g" ${input.TKG_Cluster_Name}/config.yaml
+            # Add the new files to git
+            git add .
+            git commit -m "Code Stream creating ${input.TKG_Cluster_Name} TKG Management cluster"
+            git push
+            # Move to home and delete the temporary directory
+            cd ~/
+            rm -rf $TMPDIR
+
+
+          username: ${var.TKG-Docker-Host-User}
+          password: ${var.TKG-Docker-Host-Password}
+          passphrase: ''
+          privatekey: ''
+          host: ${var.TKG-Docker-Host}
+          workingDirectory: ''
+          arguments: [
+            ]
+          environmentVariables:
+            VMWUSER: ${var.TKG-MyVMware-User}
+            VMWPASS: ${var.TKG-MyVMware-Password}
