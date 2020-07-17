@@ -232,7 +232,7 @@ stages:
         input:
           steps:
           - cat <<EOF >> /build/tkg.secret
-          - VMWPASS='${var.TKG-MyVMware-Password}'
+          - export VMWPASS='${var.TKG-MyVMware-Password}'
           - EOF
           export: [
             ]
