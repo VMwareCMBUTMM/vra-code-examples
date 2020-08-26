@@ -9,3 +9,6 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 # Install Docker Engine
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
