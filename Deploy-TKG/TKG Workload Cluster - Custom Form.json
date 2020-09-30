@@ -1,132 +1,110 @@
 {
     "layout": {
-        "pages": [
-            {
+        "pages": [{
                 "id": "page_general",
-                "sections": [
-                    {
+                "sections": [{
                         "id": "section_deploymentName",
-                        "fields": [
-                            {
-                                "id": "deploymentName",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "deploymentName",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_project",
-                        "fields": [
-                            {
-                                "id": "project",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "project",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_6591d395",
-                        "fields": [
-                            {
-                                "id": "TKG_Management_Cluster",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Management_Cluster",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_TKG_Cluster_Plan",
-                        "fields": [
-                            {
-                                "id": "TKG_Cluster_Plan",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Cluster_Plan",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_113b8044",
-                        "fields": [
-                            {
-                                "id": "TKG_ControlVM_Count",
-                                "display": "textField",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "TKG_Cluster_Plan": "prod"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
+                        "fields": [{
+                            "id": "TKG_ControlVM_Count",
+                            "display": "textField",
+                            "state": {
+                                "read-only": false,
+                                "visible": [{
+                                    "equals": {
+                                        "TKG_Cluster_Plan": "prod"
+                                    },
+                                    "value": true
+                                }]
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_0d06cfc1",
-                        "fields": [
-                            {
-                                "id": "TKG_WorkerVM_Count",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_WorkerVM_Count",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_57fe865c",
-                        "fields": [
-                            {
-                                "id": "TKG_Cluster_Name",
-                                "display": "textField",
-                                "state": {
-                                    "visible": false,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Cluster_Name",
+                            "display": "textField",
+                            "state": {
+                                "visible": false,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_14c01286",
-                        "fields": [
-                            {
-                                "id": "TKG_VM_Size",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_VM_Size",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_060bee3e",
-                        "fields": [
-                            {
-                                "id": "checkbox_628a92e5",
-                                "display": "checkbox",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "checkbox_628a92e5",
+                            "display": "checkbox",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     }
                 ],
                 "title": "General",
@@ -134,31 +112,25 @@
             },
             {
                 "id": "page_d0028acc",
-                "sections": [
-                    {
-                        "id": "section_60c7c361",
-                        "fields": [
-                            {
-                                "id": "TKG_CLI",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
-                            }
-                        ]
-                    }
-                ],
+                "sections": [{
+                    "id": "section_60c7c361",
+                    "fields": [{
+                        "id": "TKG_CLI",
+                        "display": "textField",
+                        "state": {
+                            "visible": true,
+                            "read-only": false
+                        }
+                    }]
+                }],
                 "title": "Advanced",
                 "state": {
-                    "visible": [
-                        {
-                            "equals": {
-                                "checkbox_628a92e5": true
-                            },
-                            "value": true
-                        }
-                    ]
+                    "visible": [{
+                        "equals": {
+                            "checkbox_628a92e5": true
+                        },
+                        "value": true
+                    }]
                 }
             }
         ]
@@ -222,8 +194,7 @@
                 "isMultiple": false
             },
             "default": "dev",
-            "valueList": [
-                {
+            "valueList": [{
                     "value": "dev",
                     "label": "Development"
                 },
@@ -283,8 +254,7 @@
                 "isMultiple": false
             },
             "default": "",
-            "valueList": [
-                {
+            "valueList": [{
                     "value": "small",
                     "label": "Small",
                     "description": "1 CPU - 2GB RAM - 20GB Disk"
@@ -322,7 +292,7 @@
                 "dataType": "string",
                 "isMultiple": false
             },
-            "default": "tkg-linux-amd64-v1.0.0_vmware.1.gz"
+            "default": "tkg-linux-amd64-v1.1.3_vmware.1.gz"
         }
     },
     "options": {

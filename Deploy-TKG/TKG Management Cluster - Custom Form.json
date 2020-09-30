@@ -1,190 +1,160 @@
 {
     "layout": {
-        "pages": [
-            {
+        "pages": [{
                 "id": "page_general",
-                "sections": [
-                    {
+                "sections": [{
                         "id": "section_deploymentName",
-                        "fields": [
-                            {
-                                "id": "deploymentName",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "deploymentName",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_description",
-                        "fields": [
-                            {
-                                "id": "description",
-                                "display": "textArea",
-                                "state": {
-                                    "visible": false,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "description",
+                            "display": "textArea",
+                            "state": {
+                                "visible": false,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_project",
-                        "fields": [
-                            {
-                                "id": "project",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": false,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "project",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": false,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_1d7efb39",
-                        "fields": [
-                            {
-                                "id": "vCenter_Datacenter",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "vCenter_Datacenter",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_0ddebee9",
-                        "fields": [
-                            {
-                                "id": "vCenter_Folder",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "vCenter_Folder",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_bc04f02b",
-                        "fields": [
-                            {
-                                "id": "dropDown_8d231b2d",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "dropDown_8d231b2d",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_4624a610",
-                        "fields": [
-                            {
-                                "id": "vCenter_Datastore",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "vCenter_Datastore",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_vCenter_Network",
-                        "fields": [
-                            {
-                                "id": "vCenter_Network",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "vCenter_Network",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_e29bb4e1",
-                        "fields": [
-                            {
-                                "id": "TKG_Cluster_Type",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Cluster_Type",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_2a02c227",
-                        "fields": [
-                            {
-                                "id": "TKG_VM_Size",
-                                "display": "dropDown",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_VM_Size",
+                            "display": "dropDown",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_5db83de9",
-                        "fields": [
-                            {
-                                "id": "TKG_SSH_Key",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_SSH_Key",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_acb94bf8",
-                        "fields": [
-                            {
-                                "id": "vCenter_Resource",
-                                "display": "textField",
-                                "state": {
-                                    "visible": false,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "vCenter_Resource",
+                            "display": "textField",
+                            "state": {
+                                "visible": false,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_e38905e7",
-                        "fields": [
-                            {
-                                "id": "TKG_Cluster_Name",
-                                "display": "textField",
-                                "state": {
-                                    "visible": false,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Cluster_Name",
+                            "display": "textField",
+                            "state": {
+                                "visible": false,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_efe84250",
-                        "fields": [
-                            {
-                                "id": "checkbox_9df37114",
-                                "display": "checkbox",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "checkbox_9df37114",
+                            "display": "checkbox",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     }
                 ],
                 "title": "TKG Cluster",
@@ -192,122 +162,103 @@
             },
             {
                 "id": "page_4c64b7e8",
-                "sections": [
-                    {
+                "sections": [{
                         "id": "section_8f7f9544",
-                        "fields": [
-                            {
-                                "id": "text_bed8c348",
-                                "display": "text",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "text_bed8c348",
+                            "display": "text",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_4fbc1c3e",
-                        "fields": [
-                            {
-                                "id": "GO_Version",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "GO_Version",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_edd41f5e",
-                        "fields": [
-                            {
-                                "id": "GOVC_Version",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "GOVC_Version",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_2008db4e",
-                        "fields": [
-                            {
-                                "id": "TKG_CLI",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_CLI",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_33c0beed",
-                        "fields": [
-                            {
-                                "id": "TKG_K8s_OVA",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_K8s_OVA",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_db1007de",
-                        "fields": [
-                            {
-                                "id": "TKG_Proxy_OVA",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Proxy_OVA",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_9deecb06",
-                        "fields": [
-                            {
-                                "id": "TKG_Cluster_CIDR",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Cluster_CIDR",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     },
                     {
                         "id": "section_49bc890e",
-                        "fields": [
-                            {
-                                "id": "TKG_Service_CIDR",
-                                "display": "textField",
-                                "state": {
-                                    "visible": true,
-                                    "read-only": false
-                                }
+                        "fields": [{
+                            "id": "TKG_Service_CIDR",
+                            "display": "textField",
+                            "state": {
+                                "visible": true,
+                                "read-only": false
                             }
-                        ]
+                        }]
                     }
                 ],
                 "title": "Advanced",
                 "state": {
-                    "visible": [
-                        {
-                            "equals": {
-                                "checkbox_9df37114": true
-                            },
-                            "value": true
-                        }
-                    ]
+                    "visible": [{
+                        "equals": {
+                            "checkbox_9df37114": true
+                        },
+                        "value": true
+                    }]
                 }
             }
         ]
@@ -385,15 +336,13 @@
             "valueList": {
                 "id": "com.vmware.cmbu/getVcVmFolderPathsByDatacenter",
                 "type": "scriptAction",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dataCenter": "vCenter_Datacenter"
-                    }
-                ]
+                "parameters": [{
+                    "$type": {
+                        "dataType": "string",
+                        "isMultiple": false
+                    },
+                    "dataCenter": "vCenter_Datacenter"
+                }]
             },
             "constraints": {
                 "required": true
@@ -407,15 +356,13 @@
             "valueList": {
                 "id": "com.vmware.cmbu/getVcResourceByDatacenter",
                 "type": "scriptAction",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dataCenter": "vCenter_Datacenter"
-                    }
-                ]
+                "parameters": [{
+                    "$type": {
+                        "dataType": "string",
+                        "isMultiple": false
+                    },
+                    "dataCenter": "vCenter_Datacenter"
+                }]
             },
             "placeholder": "",
             "constraints": {
@@ -434,15 +381,13 @@
             "valueList": {
                 "id": "com.vmware.cmbu/getVcDatastoreNamesByCluster",
                 "type": "scriptAction",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "cluster": "dropDown_8d231b2d"
-                    }
-                ]
+                "parameters": [{
+                    "$type": {
+                        "dataType": "string",
+                        "isMultiple": false
+                    },
+                    "cluster": "dropDown_8d231b2d"
+                }]
             },
             "constraints": {
                 "required": true
@@ -460,15 +405,13 @@
             "valueList": {
                 "id": "com.vmware.cmbu/getVcNetworkNamesByCluster",
                 "type": "scriptAction",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "cluster": "dropDown_8d231b2d"
-                    }
-                ]
+                "parameters": [{
+                    "$type": {
+                        "dataType": "string",
+                        "isMultiple": false
+                    },
+                    "cluster": "dropDown_8d231b2d"
+                }]
             },
             "constraints": {
                 "required": true
@@ -483,8 +426,7 @@
                 "isMultiple": false
             },
             "default": "",
-            "valueList": [
-                {
+            "valueList": [{
                     "value": "prod",
                     "label": "Production",
                     "description": "Three node HA control plane"
@@ -505,8 +447,7 @@
                 "isMultiple": false
             },
             "default": "",
-            "valueList": [
-                {
+            "valueList": [{
                     "value": "small",
                     "label": "Small",
                     "description": "1 CPU - 2GB RAM - 20GB Disk"
@@ -561,15 +502,13 @@
             "valueList": {
                 "id": "com.vmware.cmbu/getVcResourceByDatacenter",
                 "type": "scriptAction",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dataCenter": "vCenter_Datacenter"
-                    }
-                ]
+                "parameters": [{
+                    "$type": {
+                        "dataType": "string",
+                        "isMultiple": false
+                    },
+                    "dataCenter": "vCenter_Datacenter"
+                }]
             },
             "constraints": {
                 "required": false
@@ -629,7 +568,7 @@
                 "dataType": "string",
                 "isMultiple": false
             },
-            "default": "tkg-linux-amd64-v1.0.0_vmware.1.gz"
+            "default": "tkg-linux-amd64-v1.1.3_vmware.1.gz"
         },
         "TKG_K8s_OVA": {
             "label": "TKG_K8s_OVA",
@@ -639,7 +578,7 @@
                 "dataType": "string",
                 "isMultiple": false
             },
-            "default": "photon-3-v1.17.3_vmware.2.ova"
+            "default": "photon-3-kube-v1.18.6_vmware.1.ova"
         },
         "TKG_Proxy_OVA": {
             "label": "TKG_Proxy_OVA",
@@ -649,7 +588,7 @@
                 "dataType": "string",
                 "isMultiple": false
             },
-            "default": "photon-3-capv-haproxy-v0.6.3_vmware.1.ova"
+            "default": "photon-3-haproxy-v1.2.4-vmware.1.ova"
         },
         "TKG_Cluster_CIDR": {
             "label": "TKG_Cluster_CIDR",

@@ -1,0 +1,321 @@
+layout:
+  pages:
+    - id: page_general
+      sections:
+        - id: section_deploymentName
+          fields:
+            - id: deploymentName
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_description
+          fields:
+            - id: description
+              display: textArea
+              state:
+                visible: false
+                read-only: false
+        - id: section_project
+          fields:
+            - id: project
+              display: dropDown
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_Cluster_Plan
+          fields:
+            - id: TKG_Cluster_Plan
+              display: dropDown
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_WorkerVM_Class
+          fields:
+            - id: TKG_WorkerVM_Class
+              display: dropDown
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_WorkerVM_Count
+          fields:
+            - id: TKG_WorkerVM_Count
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_ControlVM_Class
+          fields:
+            - id: TKG_ControlVM_Class
+              display: dropDown
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_ControlVM_Count
+          fields:
+            - id: TKG_ControlVM_Count
+              display: textField
+              state:
+                read-only: false
+                visible:
+                  - equals:
+                      TKG_Cluster_Plan: prod
+                    value: true
+        - id: section_f69d1eb5
+          fields:
+            - id: TKG_Management_Cluster
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_vSphere_Password
+          fields:
+            - id: TKG_vSphere_Username
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_adc23720
+          fields:
+            - id: TKG_vSphere_Password
+              display: passwordField
+              state:
+                visible: true
+                read-only: false
+        - id: section_TKG_vSphere_Storage_Policy
+          fields:
+            - id: TKG_vSphere_Storage_Policy
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_103ca5fe
+          fields:
+            - id: TKG_Cluster_Name
+              display: textField
+              state:
+                visible: false
+                read-only: false
+        - id: section_b14de4e6
+          fields:
+            - id: checkbox_2ee3313c
+              display: checkbox
+              state:
+                visible: true
+                read-only: false
+      title: General
+      state: {}
+    - id: page_e196abdf
+      sections:
+        - id: section_9ceb2bc9
+          fields:
+            - id: TKG_CLI
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_c3e3f988
+          fields:
+            - id: TKG_Cluster_CIDR
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_0e05e766
+          fields:
+            - id: TKG_Service_CIDR
+              display: textField
+              state:
+                visible: true
+                read-only: false
+        - id: section_ed6c6447
+          fields:
+            - id: TKG_Service_Domain
+              display: textField
+              state:
+                visible: true
+                read-only: false
+      title: Advanced
+      state:
+        visible:
+          - equals:
+              checkbox_2ee3313c: true
+            value: true
+schema:
+  deploymentName:
+    label: Tanzu Cluster Name
+    description: Deployment Name
+    type:
+      dataType: string
+      isMultiple: false
+    constraints:
+      required: true
+      max-value: 80
+      pattern:
+        value: '^[0-9a-z-]+$'
+        message: ''
+  description:
+    label: Description
+    description: Description
+    type:
+      dataType: string
+      isMultiple: false
+    constraints:
+      max-value: 256
+  project:
+    label: Project
+    description: Project
+    type:
+      dataType: string
+      isMultiple: false
+    valueList:
+      id: projects
+      type: scriptAction
+    constraints:
+      required: true
+  TKG_Cluster_Plan:
+    label: Tanzu Cluster Plan
+    description: TKG Plan ("dev" or "prod")
+    signpost: TKG Plan ("dev" or "prod")
+    type:
+      dataType: string
+      isMultiple: false
+    default: dev
+    valueList:
+      - value: prod
+        label: Production
+        description: HA control plane
+      - value: dev
+        label: Development
+        description: Single node control plane
+  TKG_WorkerVM_Class:
+    label: Tanzu Worker VM Class
+    description: >-
+      TKG Control VM Class - see
+      https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-kubernetes/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
+    signpost: >-
+      TKG Control VM Class - see
+      https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-kubernetes/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
+    type:
+      dataType: string
+      isMultiple: false
+    default: guaranteed-medium
+    valueList:
+      - guaranteed-xlarge
+      - best-effort-xlarge
+      - guaranteed-large
+      - best-effort-large
+      - guaranteed-medium
+      - best-effort-medium
+      - guaranteed-small
+      - best-effort-small
+      - guaranteed-xsmall
+      - best-effort-xsmall
+  TKG_WorkerVM_Count:
+    label: Tanzu Worker VM Count
+    description: TKG Worker VM Count
+    signpost: TKG Worker VM Count
+    type:
+      dataType: string
+      isMultiple: false
+    default: '3'
+    constraints: {}
+  TKG_ControlVM_Class:
+    label: Tanzu Control VM Class
+    description: >-
+      TKG Control VM Class - see
+      https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-kubernetes/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
+    signpost: >-
+      TKG Control VM Class - see
+      https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-kubernetes/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
+    type:
+      dataType: string
+      isMultiple: false
+    default: guaranteed-medium
+    valueList:
+      - guaranteed-xlarge
+      - best-effort-xlarge
+      - guaranteed-large
+      - best-effort-large
+      - guaranteed-medium
+      - best-effort-medium
+      - guaranteed-small
+      - best-effort-small
+      - guaranteed-xsmall
+      - best-effort-xsmall
+  TKG_ControlVM_Count:
+    label: Tanzu Control VM Count
+    description: 'TKG Control Plane VM Count (3,5,7). Ignored for "dev" plans.'
+    signpost: 'TKG Control Plane VM Count (3,5,7). Ignored for "dev" plans.'
+    type:
+      dataType: string
+      isMultiple: false
+    default: '3'
+  TKG_Management_Cluster:
+    label: vSphere Supervisor Cluster IP
+    description: vSphere with Tanzu Supervisor Cluster control plane IP address
+    signpost: vSphere with Tanzu Supervisor Cluster control plane IP address
+    type:
+      dataType: string
+      isMultiple: false
+    default: 10.176.193.1
+  TKG_vSphere_Username:
+    label: vSphere Username
+    type:
+      dataType: string
+      isMultiple: false
+    default: smcgeown@cmbu.local
+  TKG_vSphere_Password:
+    label: vSphere Password
+    type:
+      dataType: string
+      isMultiple: false
+    default: ''
+  TKG_vSphere_Storage_Policy:
+    label: vSphere Storage Policy
+    type:
+      dataType: string
+      isMultiple: false
+    default: vsan-default-storage-policy
+  TKG_Cluster_Name:
+    label: TKG_Cluster_Name
+    description: TKG Cluster Name
+    signpost: TKG Cluster Name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: deploymentName
+  checkbox_2ee3313c:
+    label: Advanced Options
+    type:
+      dataType: boolean
+    constraints: {}
+  TKG_CLI:
+    label: TKG_CLI
+    description: TKG CLI Binary to download
+    signpost: TKG CLI Binary to download
+    type:
+      dataType: string
+      isMultiple: false
+    default: tkg-linux-amd64-v1.1.3_vmware.1.gz
+  TKG_Cluster_CIDR:
+    label: TKG_Cluster_CIDR
+    type:
+      dataType: string
+      isMultiple: false
+    default: 100.96.0.0/11
+  TKG_Service_CIDR:
+    label: TKG_Service_CIDR
+    type:
+      dataType: string
+      isMultiple: false
+    default: 100.64.0.0/13
+  TKG_Service_Domain:
+    label: TKG_Service_Domain
+    type:
+      dataType: string
+      isMultiple: false
+    default: cmbu.local
+options:
+  externalValidations: []
