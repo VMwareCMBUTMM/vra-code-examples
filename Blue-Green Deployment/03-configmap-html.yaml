@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html-$${COMMITID}
+  namespace: demo-app
+data:
+  index.html: |-
+    <html>
+      <head></head>
+      <body>
+        <h1 style="color: blue; align: center;">Welcome to Demo App!</h1>
+        <h2 style="color: green; align: center;">Running on Commit ID: $${COMMITID}</h2>
+      </body>
+    </html>

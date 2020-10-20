@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-$${COMMITID}
+  namespace: demo-app
+  labels:
+    app: nginx
+    version: $${COMMITID}
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        version: $${COMMITID}
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19.1
+        volumeMounts:
+        - name: nginx-html
+          mountPath: /usr/share/nginx/html
+        - name: nginx-conf
+          mountPath: /etc/nginx/conf.d
+        - name: nginx-ssl
+          mountPath: /etc/ssl
+          readOnly: true
+        ports:
+        - containerPort: 443
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /
+            port: 443
+      volumes:
+      - name: nginx-html
+        configMap:
+          name: nginx-html-$${COMMITID}
+      - name: nginx-conf
+        configMap:
+          name: nginx-config-$${COMMITID}
+      - name: nginx-ssl
+        secret:
+          secretName: nginx-ssl

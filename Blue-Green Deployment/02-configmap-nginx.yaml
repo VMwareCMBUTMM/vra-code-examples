@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config-$${COMMITID}
+  namespace: demo-app
+data:
+  default.conf: |-
+    server {
+        listen       443 ssl;
+        server_name  *.cmbu.local;
+        ssl_certificate /etc/ssl/tls.crt;
+        ssl_certificate_key /etc/ssl/tls.key;
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }

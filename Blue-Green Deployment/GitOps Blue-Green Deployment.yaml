@@ -1,0 +1,267 @@
+---
+project: Development
+kind: PIPELINE
+name: GitOps Blue-Green Deployment
+icon: organization,left, is-teal
+enabled: true
+description: Blue-Green Kubernetes Deployment Strategy using only vRA8.1 compatible objects
+concurrency: 1
+options: [
+  GIT_TRIGGER]
+input:
+  GIT_BRANCH_NAME: ''
+  GIT_CHANGE_SUBJECT: ''
+  GIT_COMMIT_ID: ''
+  GIT_EVENT_DESCRIPTION: ''
+  GIT_EVENT_OWNER_NAME: ''
+  GIT_EVENT_TIMESTAMP: ''
+  GIT_REPO_NAME: ''
+  GIT_SERVER_URL: ''
+_inputMeta:
+  GIT_SERVER_URL:
+    mandatory: false
+    description: ''
+  GIT_BRANCH_NAME:
+    mandatory: false
+    description: ''
+  GIT_COMMIT_ID:
+    mandatory: true
+    description: ''
+  GIT_EVENT_TIMESTAMP:
+    mandatory: false
+    description: ''
+  GIT_EVENT_DESCRIPTION:
+    mandatory: false
+    description: ''
+  GIT_REPO_NAME:
+    mandatory: true
+    description: ''
+  GIT_EVENT_OWNER_NAME:
+    mandatory: false
+    description: ''
+  GIT_CHANGE_SUBJECT:
+    mandatory: false
+    description: ''
+workspace:
+  endpoint: smcg-sc2-docker-host - TLS
+  image: sammcgeown/codestream-ci:latest
+  registry: ''
+  path: /build
+  autoCloneForTrigger: true
+  limits:
+    cpu: 1.0
+    memory: 512
+stageOrder:
+- Common
+- Deploy Green Application
+- Test and Migrate
+- Delete Blue Application
+stages:
+  Test and Migrate:
+    taskOrder:
+    - Test Green Application
+    - update-public-service
+    - Retest Green Application
+    tasks:
+      update-public-service:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /06-public-service.yaml
+          scmConstants:
+            COMMITID: ${input.GIT_COMMIT_ID}
+          yaml: ''
+      Test Green Application:
+        type: UserOperation
+        input:
+          approvers:
+          - smcgeown@vmware.com
+          approverGroups: [
+            ]
+          summary: Please test the Green Application
+          description: https://demo-app.cmbu.local:8443
+          sendemail: false
+          expiration: 3
+          expirationUnit: DAYS
+          pipelineName: ${name}
+          cancelPreviousPendingUserOp: false
+      Retest Green Application:
+        type: UserOperation
+        input:
+          approvers:
+          - smcgeown@vmware.com
+          approverGroups: [
+            ]
+          summary: Please test the Public URL
+          description: https://demo-app.cmbu.local:443
+          sendemail: false
+          expiration: 3
+          expirationUnit: DAYS
+          pipelineName: ${name}
+          cancelPreviousPendingUserOp: false
+  Delete Blue Application:
+    taskOrder:
+    - delete-test-service
+    - delete-deployment
+    - delete-configmap-nginx,delete-configmap-html
+    tasks:
+      delete-test-service:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: DELETE
+          timeout: 5
+          filePath: /05-test-service.yaml
+          scmConstants:
+            COMMITID: ${input.GIT_COMMIT_ID}
+          yaml: ''
+      delete-configmap-nginx:
+        type: K8S
+        ignoreFailure: true
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: DELETE
+          timeout: 5
+          filePath: /02-configmap.yaml
+          scmConstants:
+            COMMITID: ${Common.Export Commit ID.output.exports.BLUECOMMITID}
+          yaml: ''
+      delete-configmap-html:
+        type: K8S
+        ignoreFailure: true
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: DELETE
+          timeout: 5
+          filePath: /03-configmap-html.yaml
+          scmConstants:
+            COMMITID: ${Common.Export Commit ID.output.exports.BLUECOMMITID}
+          yaml: ''
+      delete-deployment:
+        type: K8S
+        ignoreFailure: true
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: field-demo-dev
+        input:
+          action: DELETE
+          timeout: 5
+          filePath: /04-deployment.yaml
+          scmConstants:
+            COMMITID: ${Common.Export Commit ID.output.exports.BLUECOMMITID}
+          yaml: ''
+  Deploy Green Application:
+    taskOrder:
+    - create-configmap-nginx,create-configmap-html
+    - create-deployment
+    - create-test-service
+    tasks:
+      create-test-service:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /05-test-service.yaml
+          scmConstants:
+            COMMITID: ${input.GIT_COMMIT_ID}
+          yaml: ''
+      create-deployment:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /04-deployment.yaml
+          scmConstants:
+            COMMITID: ${input.GIT_COMMIT_ID}
+          yaml: ''
+      create-configmap-html:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /03-configmap-html.yaml
+          scmConstants:
+            COMMITID: ${input.GIT_COMMIT_ID}
+          yaml: ''
+      create-configmap-nginx:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /02-configmap-nginx.yaml
+          scmConstants:
+            COMMITID: ${input.GIT_COMMIT_ID}
+          yaml: ''
+  Common:
+    taskOrder:
+    - Export Commit ID
+    - create-namespace
+    - create-ssl-secret
+    tasks:
+      create-namespace:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /00-app-namespace.yaml
+          scmConstants: {
+            }
+          yaml: ''
+      create-ssl-secret:
+        type: K8S
+        endpoints:
+          scm: github-bluegreen-demo-app
+          kubernetesServer: autotmm-services
+        input:
+          action: CREATE
+          timeout: 5
+          continueOnConflict: true
+          filePath: /01-secret-ssl.yaml
+          scmConstants: {
+            }
+          yaml: ''
+      Export Commit ID:
+        type: CI
+        input:
+          steps:
+          - ls
+          - cd ${input.GIT_REPO_NAME}
+          - export BLUECOMMITID=$(git rev-parse HEAD~1)
+          - ''
+          export:
+          - BLUECOMMITID
+          artifacts: [
+            ]
+          process: [
+            ]

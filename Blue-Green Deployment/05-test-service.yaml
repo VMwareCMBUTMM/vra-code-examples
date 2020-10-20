@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-test-service
+  namespace: demo-app
+  annotations:
+    metallb.universe.tf/allow-shared-ip: demo-app
+  labels:
+    app: nginx
+    version: $${COMMITID}
+spec:
+  type: LoadBalancer
+  loadBalancerIP: "10.176.144.164"
+  selector:
+    app: nginx
+    version: $${COMMITID}
+  ports:
+  - port: 8443
+    targetPort: 443
