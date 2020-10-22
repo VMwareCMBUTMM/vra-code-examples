@@ -4,7 +4,7 @@ kind: PIPELINE
 name: GitOps Blue-Green Deployment
 icon: organization,left, is-teal
 enabled: true
-description: Blue-Green Kubernetes Deployment Strategy using only vRA8.1 compatible objects
+description: Blue-Green Kubernetes Deployment Strategy
 concurrency: 1
 options: [
   GIT_TRIGGER]
@@ -61,7 +61,7 @@ stages:
     taskOrder:
     - Test Green Application
     - update-public-service
-    - Retest Green Application
+    - Test Green Application Public
     tasks:
       update-public-service:
         type: K8S
@@ -90,7 +90,7 @@ stages:
           expirationUnit: DAYS
           pipelineName: ${name}
           cancelPreviousPendingUserOp: false
-      Retest Green Application:
+      Test Green Application Public:
         type: UserOperation
         input:
           approvers:
@@ -255,7 +255,6 @@ stages:
         type: CI
         input:
           steps:
-          - ls
           - cd ${input.GIT_REPO_NAME}
           - export BLUECOMMITID=$(git rev-parse HEAD~1)
           - ''
