@@ -1,0 +1,151 @@
+---
+project: Field Demo
+kind: PIPELINE
+name: Deploy Helm Chart
+icon: data:image/png;base64,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
+enabled: true
+concurrency: 10
+input:
+  Helm_Chart: ''
+  Helm_Release: ''
+  Helm_Repository: ''
+  Helm_Settings: ''
+  Kubernetes_Endpoint: ''
+  Kubernetes_Namespace: ''
+_inputMeta:
+  Kubernetes_Endpoint:
+    mandatory: true
+    description: Kuberentes Endpoint to Deploy the Helm Chart
+  Helm_Chart:
+    mandatory: true
+    description: Helm Chart Name (e.g. kafka)
+  Helm_Settings:
+    mandatory: true
+    description: Chart Configuration Parameters - JSON formatted Key/Value pairs (e.g. {"name":"fd-harbor","password":"fd-harbor","global.loadbalancer.ip":"10.176.149.33"}
+  Kubernetes_Namespace:
+    mandatory: true
+    description: Kubernetes Namespace in which to deploy the Helm Chart - created if it doesn't already
+      exist.
+  Helm_Repository:
+    mandatory: true
+    description: Helm Repository
+  Helm_Release:
+    mandatory: true
+    description: Helm Release Name
+output:
+  LoadBalancers: ${Deploy.Deploy Helm Chart.output.properties.LoadBalancers}
+workspace:
+  endpoint: smcg-sc2-docker-host - TLS
+  image: harbor-repo.vmware.com/dockerhub-proxy-cache/sammcgeown/codestream-ci-k8s:0.0.2
+  registry: ''
+  path: ''
+  autoCloneForTrigger: false
+  limits:
+    cpu: 1.0
+    memory: 512
+stageOrder:
+- Configure
+- Deploy
+stages:
+  Configure:
+    taskOrder:
+    - Get Kubernetes Credentials
+    - Configure Kubectl
+    - Add Repository
+    tasks:
+      Get Kubernetes Credentials:
+        type: Pipeline
+        input:
+          pipeline: Get Kubernetes Endpoint Authentication
+          inputProperties:
+            Kubernetes_Endpoint_Name: ${input.Kubernetes_Endpoint}
+      Configure Kubectl:
+        type: CI
+        input:
+          steps:
+          - kubectl config set-cluster ${input.Kubernetes_Endpoint}} --server=${Configure.Get Kubernetes
+            Credentials.output.outputProperties.kubernetesURL}  --insecure-skip-tls-verify
+          - ''
+          - case ${Configure.Get Kubernetes Credentials.output.outputProperties.kubernetesAuthType} in
+          - '  certificate)'
+          - '    echo "${Configure.Get Kubernetes Credentials.output.outputProperties.kubernetesCertificate}"
+            | base64 --decode > helm-cert.pem'
+          - '    echo "${Configure.Get Kubernetes Credentials.output.outputProperties.kubernetesKey}"
+            | base64 --decode > helm-key.pem'
+          - '    kubectl config set-credentials helm --client-certificate=helm-cert.pem --client-key=helm-key.pem'
+          - '    ;;'
+          - '  token)'
+          - '    kubectl config set-credentials helm --token ${Configure.Get Kubernetes Credentials.output.outputProperties.kubernetesToken}'
+          - '    ;;'
+          - ''
+          - '  *)'
+          - '    echo "Unknown auth type"'
+          - '    ;;'
+          - esac
+          - ''
+          - kubectl config set-context helm --cluster ${input.Kubernetes_Endpoint}} --user helm
+          - kubectl config use-context helm
+          - ''
+          - kubectl get namespace
+          - ''
+          export: [
+            ]
+          artifacts: [
+            ]
+          process: [
+            ]
+      Add Repository:
+        type: CI
+        input:
+          steps:
+          - helm repo add temp ${input.Helm_Repository}
+          - ''
+          - helm repo update
+          export: [
+            ]
+          artifacts: [
+            ]
+          process: [
+            ]
+  Deploy:
+    taskOrder:
+    - Namespace
+    - Deploy Helm Chart
+    tasks:
+      Deploy Helm Chart:
+        type: CI
+        input:
+          steps:
+          - '# Convert the Helm_Settings JSON to --set key="value"'
+          - cat << EOF > settings.json
+          - ${input.Helm_Settings}
+          - EOF
+          - ''
+          - HelmSettings=$(jq -r '. | to_entries | .[] | "--set " + .key + "=\"" + .value + "\""' settings.json)
+          - '# Install the Helm Chart'
+          - helm install ${input.Helm_Release} temp/${input.Helm_Chart} $HelmSettings --namespace ${input.Kubernetes_Namespace}
+          - '# Get Load Balancers'
+          - 'export LoadBalancers=$(kubectl get services -o json | jq -rc ''.items[] | { name: .metadata.name,
+            ns: .metadata.namespace, ip: .status.loadBalancer?|.ingress[]?|.ip  }'')'
+          export:
+          - LoadBalancers
+          artifacts: [
+            ]
+          process: [
+            ]
+      Namespace:
+        type: CI
+        input:
+          steps:
+          - kubectl create namespace ${input.Kubernetes_Namespace} --dry-run=client -o=yaml | kubectl
+            apply -f -
+          - ''
+          - kubectl config set-context --current --namespace=${input.Kubernetes_Namespace}
+          - ''
+          - ''
+          export: [
+            ]
+          artifacts: [
+            ]
+          process: [
+            ]

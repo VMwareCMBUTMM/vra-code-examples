@@ -1,0 +1,52 @@
+---
+project: Field Demo
+kind: PIPELINE
+name: vra-GET
+icon: organization,left, is-warning is-solid
+enabled: true
+tags: [
+  rest,
+  vra]
+concurrency: 10
+input:
+  vraAccessToken: ''
+  vraRequestPayload: ''
+  vraRequestUri: ''
+_inputMeta:
+  vraRequestPayload:
+    mandatory: false
+    description: ''
+  vraRequestUri:
+    mandatory: true
+    description: ''
+  vraAccessToken:
+    mandatory: true
+    description: ''
+output:
+  vraResponseJson: ${REST.Execute GET.output.responseJson}
+workspace:
+  endpoint: smcg-sc2-docker-host - TLS
+  image: sammcgeown/codestream-ci
+  registry: ''
+  path: ''
+  autoCloneForTrigger: false
+  limits:
+    cpu: 1.0
+    memory: 512
+stageOrder:
+- REST
+stages:
+  REST:
+    taskOrder:
+    - Execute GET
+    tasks:
+      Execute GET:
+        type: REST
+        input:
+          action: get
+          url: ${input.vraRequestUri}
+          headers:
+            Accept: application/json
+            Content-Type: application/json
+            Authorization: ${input.vraAccessToken}
+          payload: ''

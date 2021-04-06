@@ -1,0 +1,70 @@
+---
+project: Field Demo
+kind: PIPELINE
+name: vra-authenticateUser
+icon: organization,left, is-warning is-solid
+enabled: true
+concurrency: 10
+input:
+  vraFQDN: ''
+  vraUserName: ''
+  vraUserPassword: ''
+_inputMeta:
+  vraUserPassword:
+    mandatory: true
+    description: vRealize Automation User Password
+  vraFQDN:
+    mandatory: true
+    description: vRealize Automation FQDN - e.g. vra8-test-ga.cmbu.local
+  vraUserName:
+    mandatory: true
+    description: 'vRealize Automation User in UPN format - e.g: ''user@domain.local''. For local accounts,
+      omit the domain - e.g. ''configuser'''
+output:
+  vraAccessToken: ${authUser.Authenticate.output.responseHeaders.Authorization}
+workspace:
+  endpoint: smcg-sc2-docker-host - TLS
+  image: sammcgeown/codestream-ci
+  registry: ''
+  path: ''
+  autoCloneForTrigger: false
+  limits:
+    cpu: 1.0
+    memory: 512
+stageOrder:
+- authUser
+stages:
+  authUser:
+    taskOrder:
+    - setupAuthVariables
+    - Authenticate
+    tasks:
+      Authenticate:
+        type: REST
+        input:
+          action: post
+          url: https://${input.vraFQDN}/csp/gateway/am/idp/auth/login?access_token
+          headers:
+            Accept: application/json
+            Content-Type: application/json
+          payload: |-
+            {
+              "username": "${authUser.setupAuthVariables.output.exports.vraUser}",
+              "password": "${input.vraUserPassword}",
+              "domain": "${authUser.setupAuthVariables.output.exports.vraDomain}"
+            }
+      setupAuthVariables:
+        type: CI
+        input:
+          steps:
+          - '# Split the username for domain authentication'
+          - IFS="@" read user domain <<< "${input.vraUserName}"
+          - export vraUser=$user
+          - export vraDomain=$domain
+          export:
+          - vraUser
+          - vraDomain
+          artifacts: [
+            ]
+          process: [
+            ]

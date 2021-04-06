@@ -1,0 +1,69 @@
+---
+project: Field Demo
+kind: PIPELINE
+name: Get Kubernetes Endpoint Authentication
+icon: organization,left, is-purple
+enabled: true
+concurrency: 10
+input:
+  Kubernetes_Endpoint_Name: ''
+_inputMeta:
+  Kubernetes_Endpoint_Name:
+    mandatory: true
+    description: ''
+output:
+  kubernetesAuthType: ${Main.Get Kubernetes Endpoint.output.outputProperties.vraResponseJson.properties.authType}
+  kubernetesCAData: ${Main.Get Kubernetes Endpoint.output.outputProperties.vraResponseJson.properties.certAuthorityData}
+  kubernetesCertificate: ${Main.Get Kubernetes Endpoint.output.outputProperties.vraResponseJson.properties.certData}
+  kubernetesKey: ${Main.Get Kubernetes Endpoint.output.outputProperties.vraResponseJson.properties.certKeyData}
+  kubernetesToken: ${Main.Get Kubernetes Endpoint.output.outputProperties.vraResponseJson.properties.token}
+  kubernetesURL: ${Main.Get Kubernetes Endpoint.output.outputProperties.vraResponseJson.properties.kubernetesURL}
+workspace:
+  endpoint: smcg-sc2-docker-host - TLS
+  image: sammcgeown/codestream-ci-tkg:0.0.10
+  registry: ''
+  path: ''
+  autoCloneForTrigger: false
+  limits:
+    cpu: 1.0
+    memory: 512
+stageOrder:
+- Main
+stages:
+  Main:
+    taskOrder:
+    - Authenticate
+    - Get Kubernetes Endpoints
+    - Valid
+    - Get Kubernetes Endpoint
+    tasks:
+      Authenticate:
+        type: Pipeline
+        input:
+          pipeline: vra-authenticateUser
+          inputProperties:
+            vraFQDN: ${var.vraFQDN}
+            vraUserName: ${var.vraUsername}
+            vraUserPassword: ${var.vraPassword}
+      Valid:
+        type: Condition
+        input:
+          condition: ${Main.Get Kubernetes Endpoints.output.outputProperties.vraResponseJson.count} ==
+            "1"
+      Get Kubernetes Endpoints:
+        type: Pipeline
+        input:
+          pipeline: vra-GET
+          inputProperties:
+            vraAccessToken: ${Main.Authenticate.output.outputProperties.vraAccessToken}
+            vraRequestPayload: ''
+            vraRequestUri: ${var.vraFQDN}/pipeline/api/endpoints?$filter=((type eq 'k8s') and (name eq
+              '${input.Kubernetes_Endpoint_Name}'))&expand=true
+      Get Kubernetes Endpoint:
+        type: Pipeline
+        input:
+          pipeline: vra-GET
+          inputProperties:
+            vraAccessToken: ${Main.Authenticate.output.outputProperties.vraAccessToken}
+            vraRequestPayload: ''
+            vraRequestUri: ${var.vraFQDN}${Main.Get Kubernetes Endpoints.output.outputProperties.vraResponseJson.links[0]}
